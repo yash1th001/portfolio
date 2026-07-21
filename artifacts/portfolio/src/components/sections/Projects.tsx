@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Database, BrainCircuit, Activity } from 'lucide-react';
+import { Github, Database, BrainCircuit, Activity, ArrowRight } from 'lucide-react';
 
 const projects = [
   {
@@ -7,13 +7,13 @@ const projects = [
     subtitle: 'AI Resume Evaluation Platform',
     description: 'Dual-mode resume evaluation (rule-based + LLM-augmented) to fix broken ATS screening. Semantic JD–resume matching via all-MiniLM-L6-v2 and Gemini 2.5 Flash Lite.',
     features: [
-      'Explainable scoring across ATS readability, JD match, and structure',
+      'Explainable scoring across ATS readability, JD match',
       'FAIRE-based bias detection + MongoDB audit logging',
-      'LRU caching with SHA-256 keys, PII stripping middleware (~60% latency reduction)'
+      'LRU caching with SHA-256 keys (~60% latency reduction)'
     ],
     tech: ['Python', 'FastAPI', 'Gemini', 'MongoDB', 'sentence-transformers'],
     github: 'https://github.com/yash1th001',
-    icon: <BrainCircuit className="w-8 h-8 text-primary" />
+    icon: <BrainCircuit className="w-10 h-10 text-primary" />
   },
   {
     title: 'SymptomChecker',
@@ -26,7 +26,7 @@ const projects = [
     ],
     tech: ['Python', 'LangChain', 'ChromaDB', 'LLMs'],
     github: 'https://github.com/yash1th001',
-    icon: <Activity className="w-8 h-8 text-primary" />
+    icon: <Activity className="w-10 h-10 text-primary" />
   },
   {
     title: 'Sentiment Analyzer',
@@ -39,73 +39,95 @@ const projects = [
     ],
     tech: ['Python', 'NLTK', 'Scikit-learn', 'TF-IDF', 'Seaborn'],
     github: 'https://github.com/yash1th001',
-    icon: <Database className="w-8 h-8 text-primary" />
+    icon: <Database className="w-10 h-10 text-primary" />
   }
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 relative bg-card/30">
-      <div className="container mx-auto px-6 md:px-12">
+    <section id="projects" className="py-32 relative bg-card/20 border-y border-border">
+      {/* Decorative ambient background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(var(--primary-rgb),0.05)_0%,transparent_70%)] pointer-events-none" />
+
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-16 flex items-center gap-4 flex-row-reverse"
+          className="mb-20 flex items-center gap-6 flex-row-reverse"
         >
-          <h2 className="text-3xl md:text-5xl font-bold">02. Models_Deployed</h2>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">02. Models_Deployed</h2>
           <div className="h-[1px] flex-1 bg-border relative">
-             <div className="absolute inset-y-0 right-0 w-24 neural-line rotate-180" />
+             <div className="absolute inset-y-0 right-0 w-32 neural-line rotate-180" />
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-10">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group relative bg-card border border-border p-8 rounded-lg hover:border-primary/50 transition-colors flex flex-col h-full"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="group relative bg-card border border-border rounded-xl flex flex-col h-[520px] overflow-hidden hover:shadow-[0_10px_40px_hsla(150,100%,50%,0.1)] transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                {project.icon}
-              </div>
+              {/* Gradient Top Border */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-emerald-300 to-primary opacity-50 group-hover:opacity-100 transition-opacity" />
               
-              <div className="flex justify-between items-start mb-6 relative z-10">
-                <div>
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm font-mono text-primary/80 mt-1">
-                    {project.subtitle}
-                  </p>
+              {/* Giant Background Number */}
+              <div className="absolute -right-4 -bottom-4 text-[180px] font-bold font-mono text-foreground/5 leading-none pointer-events-none group-hover:text-primary/[0.03] transition-colors duration-500">
+                0{i + 1}
+              </div>
+
+              <div className="p-8 flex-1 flex flex-col relative z-10">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="p-3 bg-primary/10 rounded-lg border border-primary/20 group-hover:scale-110 transition-transform duration-500">
+                    {project.icon}
+                  </div>
                 </div>
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Github size={20} />
-                </a>
+                
+                <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-sm font-mono text-primary/80 mb-6">
+                  {project.subtitle}
+                </p>
+                
+                <p className="text-muted-foreground text-sm mb-6 flex-grow">
+                  {project.description}
+                </p>
+                
+                <ul className="space-y-3 mb-8 text-sm text-muted-foreground">
+                  {project.features.map((feature, j) => (
+                    <li key={j} className="flex gap-3 items-start">
+                      <span className="text-primary mt-1 text-[10px] glow-text">■</span>
+                      <span className="leading-tight">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-border/50">
+                  {project.tech.map((t) => (
+                    <span key={t} className="flex items-center gap-1.5 text-xs font-mono px-2.5 py-1.5 bg-background border border-border text-foreground rounded-md group-hover:border-primary/30 transition-colors">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary/50" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-              
-              <p className="text-muted-foreground text-sm mb-6 flex-grow relative z-10">
-                {project.description}
-              </p>
-              
-              <ul className="space-y-3 mb-8 text-sm text-muted-foreground relative z-10">
-                {project.features.map((feature, j) => (
-                  <li key={j} className="flex gap-2 items-start">
-                    <span className="text-primary mt-1 text-[10px]">■</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-border relative z-10">
-                {project.tech.map((t) => (
-                  <span key={t} className="text-xs font-mono px-2 py-1 bg-background border border-border text-foreground rounded">
-                    {t}
-                  </span>
-                ))}
+
+              {/* Slide-up Action Button */}
+              <div className="absolute left-0 right-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+                <a 
+                  href={project.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-4 bg-primary text-primary-foreground font-mono font-bold hover:bg-emerald-400 transition-colors"
+                >
+                  <Github size={18} />
+                  View_Source <ArrowRight size={18} />
+                </a>
               </div>
             </motion.div>
           ))}

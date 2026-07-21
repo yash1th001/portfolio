@@ -27,23 +27,23 @@
 }
 
 :root {
-  --background: 240 10% 4%;
-  --foreground: 0 0% 95%;
+  --background: 240 10% 2%;
+  --foreground: 0 0% 98%;
   
-  --card: 240 10% 6%;
-  --card-foreground: 0 0% 95%;
-  --card-border: 240 10% 12%;
+  --card: 240 10% 4%;
+  --card-foreground: 0 0% 98%;
+  --card-border: 240 10% 10%;
   
   --border: 240 10% 12%;
   --input: 240 10% 12%;
   
   /* Neural Green */
   --primary: 150 100% 50%;
-  --primary-foreground: 240 10% 4%;
+  --primary-foreground: 240 10% 2%;
   --ring: 150 100% 50%;
   
-  --muted: 240 10% 10%;
-  --muted-foreground: 240 10% 60%;
+  --muted: 240 10% 6%;
+  --muted-foreground: 240 10% 65%;
   
   --app-font-sans: 'Space Grotesk', sans-serif;
   --app-font-mono: 'JetBrains Mono', monospace;
@@ -57,21 +57,46 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.04;
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 50;
+/* Global Background Patterns */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, hsl(var(--primary) / 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
+.bg-scanlines {
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.25) 51%
+  );
+  background-size: 100% 4px;
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 50;
+  mix-blend-mode: overlay;
+}
+
+/* Typography Scale enhancements */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.04em;
+}
+
+/* Component utilities */
 .glow-text {
-  text-shadow: 0 0 10px hsla(150, 100%, 50%, 0.4), 0 0 20px hsla(150, 100%, 50%, 0.2);
+  text-shadow: 0 0 10px hsla(150, 100%, 50%, 0.5), 0 0 20px hsla(150, 100%, 50%, 0.3), 0 0 30px hsla(150, 100%, 50%, 0.1);
 }
 
 .glow-box {
-  box-shadow: 0 0 20px hsla(150, 100%, 50%, 0.1), inset 0 0 20px hsla(150, 100%, 50%, 0.05);
+  box-shadow: 0 0 15px hsla(150, 100%, 50%, 0.15), inset 0 0 15px hsla(150, 100%, 50%, 0.1);
+}
+
+.glow-border-left {
+  box-shadow: -4px 0 15px -2px hsla(150, 100%, 50%, 0.3);
 }
 
 .neural-line {
@@ -79,11 +104,53 @@ body {
 }
 
 .nav-blur {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: hsla(240, 10%, 4%, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: hsla(240, 10%, 2%, 0.7);
 }
 
+/* Animations */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes scan-sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.btn-scanline {
+  position: relative;
+  overflow: hidden;
+}
+.btn-scanline::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, transparent, hsla(150, 100%, 50%, 0.2) 50%, transparent);
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+.btn-scanline:hover::after {
+  transform: translateY(100%);
+  transition: transform 0.8s linear;
+}
+
+@keyframes matrix-rain {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+.animate-matrix {
+  animation: matrix-rain 3s linear infinite;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -95,5 +162,5 @@ body {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--primary) / 0.5);
 }
