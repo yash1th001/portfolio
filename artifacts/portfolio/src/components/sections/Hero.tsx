@@ -180,7 +180,7 @@ export function Hero() {
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="btn-scanline relative px-8 py-4 bg-primary text-primary-foreground font-mono font-bold rounded-sm hover:bg-emerald-400 transition-colors flex items-center gap-3 glow-box group overflow-hidden"
           >
-            Deploy_Projects 
+            Explore Work
             <ArrowDown size={20} className="group-hover:translate-y-1 transition-transform" />
           </button>
           

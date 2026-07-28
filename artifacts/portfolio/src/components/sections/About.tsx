@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const stats = [
-  { label: 'CGPA', value: '8.55' },
+  { label: 'CGPA', value: '8.51' },
   { label: 'Certification', value: 'GCP ACE' },
   { label: 'Projects', value: '3+' },
   { label: 'Ideathon', value: 'Top 5' }
@@ -56,9 +56,9 @@ export function About() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                I am a final-year B.Tech student in Artificial Intelligence & Data Science at VVIT, 
-                passionate about architecting systems that bridge theoretical machine learning and 
-                practical, production-ready infrastructure.
+                I am a B.Tech graduate in Artificial Intelligence & Data Science from VVIT, 
+                driven by a passion for architecting systems that bridge theoretical machine learning 
+                and practical, production-ready infrastructure.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
@@ -66,9 +66,9 @@ export function About() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                My expertise lies in building <span className="text-primary font-mono bg-primary/10 px-1 py-0.5 rounded">LLM pipelines</span>, 
-                NLP systems, and cloud-native ML infrastructure. As a Google Cloud Associate Cloud Engineer, 
-                I ensure that the AI solutions I build are scalable, reliable, and efficiently deployed.
+                My expertise spans <span className="text-primary font-mono bg-primary/10 px-1 py-0.5 rounded">LLM pipelines</span>, 
+                NLP systems, and cloud-native ML infrastructure. As a Google Cloud Certified Associate Cloud Engineer, 
+                I build AI solutions that are scalable, reliable, and production-deployable from day one.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
@@ -76,8 +76,8 @@ export function About() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                Recently, I developed <strong className="text-foreground">AICruit</strong> — an end-to-end AI resume evaluation platform 
-                featuring semantic matching, bias auditing, and explainable scoring to fix broken ATS screening.
+                Most recently I built <strong className="text-foreground">AICruit</strong> — an end-to-end AI resume evaluation platform 
+                combining semantic matching, bias auditing, and explainable scoring to replace broken ATS screening with something that actually works.
               </motion.p>
             </div>
           </motion.div>
