@@ -46,7 +46,7 @@ const skillCategories = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-32 relative overflow-hidden">
+    <section id="skills" className="py-16 sm:py-24 lg:py-32 relative overflow-hidden">
       {/* CSS Matrix Rain Effect Background */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none flex justify-around">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -58,20 +58,20 @@ export function Skills() {
         ))}
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-20 flex items-center gap-6"
+          className="mb-12 sm:mb-16 lg:mb-20 flex items-center gap-4 sm:gap-6"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">03. Neural_Weights</h2>
-          <div className="h-[1px] flex-1 bg-border relative">
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tight">03. Neural_Weights</h2>
+          <div className="h-[1px] flex-1 bg-border relative hidden sm:block">
              <div className="absolute inset-y-0 left-0 w-32 neural-line" />
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 lg:gap-16">
           {skillCategories.map((category, i) => (
             <motion.div
               key={category.title}
@@ -79,22 +79,22 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="relative p-8 border border-border bg-card/40 backdrop-blur-sm rounded-xl group hover:border-primary/40 transition-colors"
+              className="relative p-5 sm:p-8 border border-border bg-card/40 backdrop-blur-sm rounded-xl group hover:border-primary/40 transition-colors"
             >
               {/* Inner ambient glow on hover */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.1)_0%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
 
-              <h3 className="text-2xl font-mono text-foreground mb-10 flex items-center gap-4 relative z-10">
-                <div className="p-2 bg-primary/10 text-primary border border-primary/20 rounded-lg group-hover:scale-110 transition-transform group-hover:shadow-[0_0_15px_hsla(150,100%,50%,0.2)]">
+              <h3 className="text-lg sm:text-2xl font-mono text-foreground mb-6 sm:mb-10 flex items-center gap-3 sm:gap-4 relative z-10">
+                <div className="p-2 bg-primary/10 text-primary border border-primary/20 rounded-lg group-hover:scale-110 transition-transform group-hover:shadow-[0_0_15px_hsla(150,100%,50%,0.2)] shrink-0">
                   {category.icon}
                 </div>
-                {category.title}
+                <span>{category.title}</span>
               </h3>
               
-              <div className="space-y-6 relative z-10">
+              <div className="space-y-4 sm:space-y-6 relative z-10">
                 {category.skills.map((skill, j) => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between text-sm font-mono">
+                  <div key={skill.name} className="space-y-1.5 sm:space-y-2">
+                    <div className="flex justify-between text-xs sm:text-sm font-mono">
                       <span className="text-foreground">{skill.name}</span>
                       <span className="text-primary/70">{skill.level}%</span>
                     </div>
