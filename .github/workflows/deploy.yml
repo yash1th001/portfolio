@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: 'pnpm'
 
       - name: Install Dependencies
@@ -44,7 +44,7 @@ jobs:
       - name: Build Portfolio Application
         env:
           PORT: '5000'
-          BASE_PATH: './'
+          BASE_PATH: '/portfolio/'
         run: pnpm --filter @workspace/portfolio run build
 
       - name: Upload GitHub Pages Artifact
