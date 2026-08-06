@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 
-const port = Number(process.env.PORT || 5000);
-
 export default defineConfig({
-  base: './',
+  // Use '/' for custom domain (yash1th.me).
+  // Use './' only if deploying to a sub-path like github.io/repo/
+  base: '/',
   plugins: [
     react(),
     tailwindcss(),
@@ -14,12 +14,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, 'src'),
-      '@assets': path.resolve(
-        import.meta.dirname,
-        '..',
-        '..',
-        'attached_assets',
-      ),
     },
     dedupe: ['react', 'react-dom'],
   },
@@ -27,14 +21,20 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist'),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        // Stable asset filenames for caching
+        manualChunks: undefined,
+      },
+    },
   },
   server: {
-    port,
+    port: Number(process.env.PORT || 5000),
     strictPort: false,
     host: '0.0.0.0',
   },
   preview: {
-    port,
+    port: Number(process.env.PORT || 5000),
     host: '0.0.0.0',
   },
 });
