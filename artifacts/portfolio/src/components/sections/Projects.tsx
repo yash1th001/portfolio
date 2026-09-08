@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Database, BrainCircuit, Activity, ArrowRight } from 'lucide-react';
+import { Github, Database, BrainCircuit, Activity, ArrowRight, ExternalLink } from 'lucide-react';
 
 const projects = [
   {
@@ -13,6 +13,7 @@ const projects = [
     ],
     tech: ['Python', 'FastAPI', 'Gemini', 'MongoDB', 'sentence-transformers'],
     github: 'https://github.com/yash1th001/AIRCUIT_GEMINI',
+    live: 'https://aicruit-2mzv.onrender.com/',
     icon: <BrainCircuit className="w-10 h-10 text-primary" />
   },
   {
@@ -25,7 +26,7 @@ const projects = [
       'Vector similarity search for medical literature'
     ],
     tech: ['Python', 'LangChain', 'ChromaDB', 'LLMs'],
-    github: 'https://github.com/yash1th001',
+    github: 'https://github.com/yash1th001/Symptom-Checker---Conversational-Health-Assistant',
     icon: <Activity className="w-10 h-10 text-primary" />
   },
   {
@@ -38,7 +39,7 @@ const projects = [
       'Interactive dashboard visualizations'
     ],
     tech: ['Python', 'NLTK', 'Scikit-learn', 'TF-IDF', 'Seaborn'],
-    github: 'https://github.com/yash1th001',
+    github: 'https://github.com/yash1th001/Sentimental_analysis_social_media',
     icon: <Database className="w-10 h-10 text-primary" />
   }
 ];
@@ -117,17 +118,28 @@ export function Projects() {
                 </div>
               </div>
 
-              {/* Action Button: Always visible on touch, slide-up overlay on desktop */}
-              <div className="relative md:absolute left-0 right-0 bottom-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20">
+              {/* Action Buttons: Always visible on touch, slide-up overlay on desktop */}
+              <div className="relative md:absolute left-0 right-0 bottom-0 md:translate-y-full md:group-hover:translate-y-0 transition-transform duration-300 ease-out z-20 flex">
                 <a 
                   href={project.github} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 sm:py-4 bg-primary text-primary-foreground font-mono text-sm sm:text-base font-bold hover:bg-emerald-400 transition-colors"
+                  className={`flex items-center justify-center gap-2 py-3.5 sm:py-4 bg-primary text-primary-foreground font-mono text-sm sm:text-base font-bold hover:bg-emerald-400 transition-colors ${project.live ? 'w-1/2' : 'w-full'}`}
                 >
                   <Github size={18} />
                   View_Source <ArrowRight size={18} />
                 </a>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-1/2 py-3.5 sm:py-4 bg-background border-t border-primary/40 text-primary font-mono text-sm sm:text-base font-bold hover:bg-primary/10 transition-colors"
+                  >
+                    <ExternalLink size={18} />
+                    Live_Demo
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
