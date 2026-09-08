@@ -122,7 +122,7 @@ export function About() {
                 </div>
                 <div className="flex flex-col sm:flex-row">
                   <span className="text-emerald-400 sm:w-32 shrink-0">"email":</span>
-                  <a href="mailto:yashwanth.99122@gmail.com" className="text-primary hover:underline transition-all hover:text-emerald-300 break-all sm:break-normal">
+                  <a href="mailto:yashwanth.99122@gmail.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-all hover:text-emerald-300 break-all sm:break-normal">
                     "yashwanth.99122@gmail.com"
                   </a>
                 </div>

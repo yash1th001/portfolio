@@ -67,6 +67,8 @@ export function Contact() {
           
           <motion.a 
             href="mailto:yashwanth.99122@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="group relative inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-10 py-4 sm:py-5 bg-card border-2 border-primary text-primary font-mono font-bold rounded-full transition-all duration-300 overflow-hidden text-xs sm:text-base max-w-full"
@@ -83,8 +85,8 @@ export function Contact() {
               <motion.a
                 key={social.label}
                 href={social.href}
-                target={social.href.startsWith('http') ? "_blank" : undefined}
-                rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
