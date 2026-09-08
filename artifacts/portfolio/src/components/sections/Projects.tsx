@@ -12,7 +12,7 @@ const projects = [
       'LRU caching with SHA-256 keys (~60% latency reduction)'
     ],
     tech: ['Python', 'FastAPI', 'Gemini', 'MongoDB', 'sentence-transformers'],
-    github: 'https://github.com/yash1th001',
+    github: 'https://github.com/yash1th001/AIRCUIT_GEMINI',
     icon: <BrainCircuit className="w-10 h-10 text-primary" />
   },
   {
